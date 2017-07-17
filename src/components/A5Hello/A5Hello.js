@@ -12,7 +12,6 @@ const A5Hello = ({ message }) => {
   )
 }
 
-
 A5Hello.propTypes = {
   /**
    * Message to display
