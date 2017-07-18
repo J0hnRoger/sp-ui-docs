@@ -2,6 +2,15 @@
   "name": "a5sys-software-factory",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "prestart": "npm run gen:docs",
+    "start": "npm-run-all --parallel start:docs gen:docs-watch",
+    "start:docs": "node scripts/start.js",
+    "gen:docs": "node scripts/generateComponentData.js",
+    "gen:docs-watch": "npm run gen:docs -- --watch",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
+  },
   "dependencies": {
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
@@ -43,19 +52,13 @@
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "2.0.3"
   },
-  "scripts": {
-    "prestart": "npm run gen:docs",
-    "start": "npm-run-all --parallel start:docs gen:docs-watch",
-    "start:docs": "node scripts/start.js",
-    "gen:docs": "node scripts/generateComponentData.js",
-    "gen:docs-watch": "npm run gen:docs -- --watch",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
-  },
   "devDependencies": {
     "chokidar": "^1.7.0",
+    "enzyme": "^2.9.1",
     "npm-run-all": "^4.0.2",
-    "react-docgen": "^2.16.0"
+    "react-addons-test-utils": "^15.6.0",
+    "react-docgen": "^2.16.0",
+    "react-test-renderer": "^15.6.1"
   },
   "jest": {
     "collectCoverageFrom": [
