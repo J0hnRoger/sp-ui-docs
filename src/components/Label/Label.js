@@ -17,7 +17,7 @@ Label.propTypes = {
     /**
      * Label Text
      */
-    label: PropTypes.string.required,
+    label: PropTypes.string.isRequired,
     
     /**
      * Display asterisk after the label if true
