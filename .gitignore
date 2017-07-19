@@ -22,3 +22,5 @@ yarn-error.log*
 
 # exclude lib file generated 
 /lib
+# SharePoint showcase deployment
+env.json 
