@@ -11,7 +11,11 @@
     "build:docs": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy:docs": "npm run build:docs",
-    "deploy:docs": "console.log('TODO - Deploy on O365 Site')"
+    "deploy:docs": "console.log('TODO - Deploy on O365 Site')",
+    "build:css": "cpx \"./src/components/**/*.css\" ./lib",
+    "build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
+    "prebuild:lib": "rimraf lib",
+    "build:lib": "npm run build:commonjs && npm run build:css"
   },
   "dependencies": {
     "autoprefixer": "7.1.1",
@@ -55,13 +59,17 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "chokidar": "^1.7.0",
+    "cpx": "^1.5.0",
+    "cross-env": "^5.0.1",
     "enzyme": "^2.9.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
     "react-addons-test-utils": "^15.6.0",
     "react-docgen": "^2.16.0",
     "react-test-renderer": "^15.6.1",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6"
   },
   "jest": {
@@ -98,6 +106,12 @@
   },
   "babel": {
     "presets": [
+      [
+        "env",
+        {
+          "modules": "commonjs"
+        }
+      ],
       "react-app"
     ]
   },
